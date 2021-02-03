@@ -48,10 +48,10 @@
             console.log('area', area);
 
             // Current Weather Data
-            // fetch('http://api.openweathermap.org/data/2.5/weather?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
+            // fetch('https://api.openweathermap.org/data/2.5/weather?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
 
             // 5 Day / 3 Hour Forecast
-            fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
+            fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
                 .then(response => response.json())
                 .then(data => console.log(data))
         })
