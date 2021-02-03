@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,9 +23,9 @@
     <div class="container">
         <form class="col-md-6 m-auto py-5">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <input id="input-value" type="text" class="form-control" placeholder="Enter a location for Weather ...">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-danger">Search</button>
+                    <button id="input-btn" type="button" class="btn btn-danger">Search</button>
                 </div>
             </div>
         </form>
@@ -37,13 +38,23 @@
     </div>
 
     <script>
-        function userInfo() {
-            fetch('http://api.openweathermap.org/data/2.5/weather?q=virginia Beach&units=metric&appid=f2aa842df6c85cc3a91488c28f0f00d6')
+
+        document.getElementById('input-btn').addEventListener('click', function () {
+
+            // userInfo();
+
+            // http://api.openweathermap.org/data/2.5/forecast?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642
+            const area = document.getElementById('input-value').value;
+            console.log('area', area);
+
+            // Current Weather Data
+            // fetch('http://api.openweathermap.org/data/2.5/weather?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
+
+            // 5 Day / 3 Hour Forecast
+            fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
                 .then(response => response.json())
                 .then(data => console.log(data))
-        }
-
-        userInfo();
+        })
 
     </script>
 
