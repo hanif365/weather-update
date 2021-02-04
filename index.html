@@ -31,9 +31,9 @@
         </form>
         <div class="weather-status text-white text-center">
             <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
-            <h1 class="lead">Clouds</h1>
+            <h1 id="city-name">Dhaka</h1>
+            <h3><span id="temp">38.06</span>&deg;C</h3>
+            <h1 id="weather-description" class="lead">Clouds</h1>
         </div>
     </div>
 
@@ -53,7 +53,31 @@
             // 5 Day / 3 Hour Forecast
             fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + area + '&units=metric&appid=b220ef300d42f76b9b7c6ec3db021642')
                 .then(response => response.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    console.log(data);
+                    console.log(data['city']['name']);
+                    console.log(data.city.name);
+                    // console.log(data['list']['0']['dt_txt']);
+                    // console.log(data['list']['0']['main']['temp']);
+                    // console.log(data['list']['0']['main']['temp_max']);
+                    // console.log(data['list']['0']['main']['temp_min']);
+                    // console.log(data['list']['0']['main']['feels_like']);
+                    console.log(data['list']['0']['weather']['0']['description']);
+                    // console.log(data['list']['0']['weather']['0']['icon']);
+                    // console.log(data['list']['0']['wind']['speed']);
+                    // console.log(data.list[0].wind.speed);
+                    // console.log(data['list']['0']['main']['temp']);
+                    const list0Main = data.list[0].main;
+                    const list0weather = data.list[0].weather[0];
+                    const cityName = data.city.name;
+                    const temperature = list0Main.temp;
+                    const weatherDescription = list0weather.description;
+                    document.getElementById('city-name').innerText = cityName;
+                    document.getElementById('temp').innerText = temperature;
+                    document.getElementById('weather-description').innerText = weatherDescription;
+
+                })
+
         })
 
     </script>
